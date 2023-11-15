@@ -4,7 +4,10 @@ import { IFilms } from "../../Interface"
 import "./Films.scss"
 
 export default function Films() {
-  const films: IFilms[] = data.TendingNow 
+  const films: IFilms[] = data.TendingNow
+  const sortedFilms = [...films].sort((a,b) => {
+    return new Date(b.Date).getTime() - new Date(a.Date).getTime();
+  }) 
   
   const elRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +37,7 @@ export default function Films() {
       <p className="Films-title">Trending Now</p>
       <div className="Films-items" ref={elRef}>
         {
-          films.map(film => {
+          sortedFilms.map(film => {
             return(
               <img src={film.CoverImage} alt={film.Title} key = {film.Id} onClick={() => handleCHange(film)}/>
             )

@@ -4,9 +4,9 @@ import "./Home.scss"
 import Films from "./Films/Films"
 import { ICover } from "../Interface"
 
+
 export default function Home() {
   const datas: ICover = data.Featured
- 
   return (
     <div className="Home">
       <div className="Home-main">
